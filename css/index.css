@@ -3575,3 +3575,19 @@ pre .deletion {
     right: 30px;
   }
 }
+:root {
+  --primary: #356fce;
+  --primary-70: rgba(53, 111, 206, 0.7);
+  --primary-50: rgba(53, 111, 206, 0.5);
+  --primary-30: rgba(53, 111, 206, 0.3);
+  --primary-weak: #356fce;
+  --primary-weak-50: rgba(53, 111, 206, 0.5);
+}
+:root.dark {
+  --primary: #356fce;
+  --primary-70: rgba(53, 111, 206, 0.7);
+  --primary-50: rgba(53, 111, 206, 0.5);
+  --primary-30: rgba(53, 111, 206, 0.3);
+  --primary-weak: #356fce;
+  --primary-weak-50: rgba(53, 111, 206, 0.5);
+}
