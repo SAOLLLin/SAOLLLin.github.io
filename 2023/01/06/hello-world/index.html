@@ -7,25 +7,25 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="远程仓库与本地Git绑定 本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹    如果没有则需要通过以下命令创建 1ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  “” 里是注册Github的邮箱  创建成功后其中有一个id_rsa.pub文件，我们复制其中的key:  返回g">
+<meta name="description" content="使用 SSH 连接到 GitHub 本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹      如果没有则需要通过以下命令创建 1ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  “&amp;#x79;&amp;#111;&amp;#x75;&amp;#x72;&amp;#x65;&amp;#109;&amp;#x61;&amp;#105;&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 SSH 连接到 GitHub">
 <meta property="og:url" content="https://saolllin.github.io/2023/01/06/hello-world/index.html">
 <meta property="og:site_name" content="骚林大大的博客">
-<meta property="og:description" content="远程仓库与本地Git绑定 本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹    如果没有则需要通过以下命令创建 1ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  “” 里是注册Github的邮箱  创建成功后其中有一个id_rsa.pub文件，我们复制其中的key:  返回g">
+<meta property="og:description" content="使用 SSH 连接到 GitHub 本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹      如果没有则需要通过以下命令创建 1ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  “&amp;#x79;&amp;#111;&amp;#x75;&amp;#x72;&amp;#x65;&amp;#109;&amp;#x61;&amp;#105;&amp;">
 <meta property="og:locale">
-<meta property="og:image" content="https://saolllin.github.io/2023/01/06/hello-world/img/wj.png">
-<meta property="og:image" content="https://saolllin.github.io/2023/01/06/hello-world/img/idk.png">
-<meta property="og:image" content="https://saolllin.github.io/2023/01/06/hello-world/img/jt1.png">
-<meta property="og:image" content="https://saolllin.github.io/2023/01/06/hello-world/img/jt2.png">
-<meta property="og:image" content="https://saolllin.github.io/2023/01/06/hello-world/img/jt3.png">
-<meta property="og:image" content="https://saolllin.github.io/2023/01/06/hello-world/img/jt4.png">
-<meta property="og:image" content="https://saolllin.github.io/2023/01/06/hello-world/img/jt5.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9c1e6940570340a980a46e893f5d1560.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/63c4eb27278244a8ba257f573d385d86.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9ebf58ec2b38467589ab47be33dd3d07.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/945f9e4a867c474394c2616a9f5659c9.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9e4ab31731a2418ea4c7be6feca40a11.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5950836fb37c4d8ea3842b5fcee58972.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/35f36a4f0b614107861ce7b182d98e0e.png#pic_center">
 <meta property="article:published_time" content="2023-01-05T23:08:31.192Z">
-<meta property="article:modified_time" content="2023-01-06T13:45:42.877Z">
+<meta property="article:modified_time" content="2023-01-06T14:56:37.348Z">
 <meta property="article:author" content="Sao Lin">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://saolllin.github.io/2023/01/06/hello-world/img/wj.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/9c1e6940570340a980a46e893f5d1560.png#pic_center">
 
     <meta name="keywords" content="使用 SSH 连接到 GitHub">
 
@@ -375,40 +375,37 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h1 id="远程仓库与本地Git绑定"><a href="#远程仓库与本地Git绑定" class="headerlink" title="远程仓库与本地Git绑定"></a>远程仓库与本地Git绑定</h1><ul>
-<li>本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹</li>
+    <h1 id="使用-SSH-连接到-GitHub"><a href="#使用-SSH-连接到-GitHub" class="headerlink" title="使用 SSH 连接到 GitHub"></a>使用 SSH 连接到 GitHub</h1><ul>
+<li>本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹  </li>
 </ul>
-<p><img src="img/wj.png" loading="lazy"></p>
+<p><img src="https://img-blog.csdnimg.cn/9c1e6940570340a980a46e893f5d1560.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 <ul>
 <li><p>如果没有则需要通过以下命令创建</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot; </span><br></pre></td></tr></table></figure>
-<p>“” 里是注册Github的邮箱</p>
+<p>“<a href="mailto:&#x79;&#111;&#x75;&#x72;&#x65;&#109;&#x61;&#105;&#x6c;&#64;&#x65;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;">&#x79;&#111;&#x75;&#x72;&#x65;&#109;&#x61;&#105;&#x6c;&#64;&#x65;&#120;&#97;&#x6d;&#112;&#x6c;&#x65;&#x2e;&#99;&#x6f;&#109;</a>“ 里是注册Github的邮箱</p>
 </li>
-<li><p>创建成功后其中有一个id_rsa.pub文件，我们复制其中的key:<br><img src="img/idk.png" loading="lazy"></p>
+<li><p>创建成功后其中有一个id_rsa.pub文件，我们复制其中的key:<br><img src="https://img-blog.csdnimg.cn/63c4eb27278244a8ba257f573d385d86.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 </li>
 <li><p>返回github，进入 Account Settings（账户配置），左边选择SSH and GPG Keys选项：</p>
 </li>
 </ul>
-<img src="img/jt1.png" width="80%" height="80%" loading="lazy">
-
+<p><img src="https://img-blog.csdnimg.cn/9ebf58ec2b38467589ab47be33dd3d07.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 <ul>
 <li>其中的title随便填，下面的粘贴在你电脑上生成的key。点击添加之后，则添加成功：</li>
 </ul>
-<img src="img/jt2.png" width="80%" height="80%" loading="lazy">
-<img src="img/jt3.png" width="80%" height="80%" loading="lazy">
-
+<p><img src="https://img-blog.csdnimg.cn/945f9e4a867c474394c2616a9f5659c9.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<p><img src="https://img-blog.csdnimg.cn/9e4ab31731a2418ea4c7be6feca40a11.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 <ul>
 <li>成功后会有显示</li>
 </ul>
-<img src="img/jt4.png" width="80%" height="80%" loading="lazy">
-
+<p><img src="https://img-blog.csdnimg.cn/5950836fb37c4d8ea3842b5fcee58972.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 <ul>
 <li><p>验证是否绑定本地成功，在 git-bash 中验证 输入命令行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
 <li><p>看到 You’ve successfully authenticated, but GitHub does not provide shell access. 表示已经连上github</p>
 </li>
 </ul>
-<p><img src="img/jt5.png" loading="lazy"></p>
+<p><img src="https://img-blog.csdnimg.cn/35f36a4f0b614107861ce7b182d98e0e.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 
 </article>
     
