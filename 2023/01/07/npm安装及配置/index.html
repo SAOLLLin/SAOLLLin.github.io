@@ -7,30 +7,58 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="使用 SSH 连接到 GitHub 本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹      如果没有则需要通过以下命令创建 1ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  “&amp;#x79;&amp;#111;&amp;#117;&amp;#x72;&amp;#x65;&amp;#109;&amp;#97;&amp;#105;&amp;#">
+<meta name="description" content="使用之前，先了解3个东西的作用 npm: Nodejs下的包管理器 webpack: 它主要的用途是通过CommonJS的语法把所有浏览器端需要发布的静态资源做相应的准备，比如资源的合并和打包 vue-cli: 用户生成Vue工程模板。（帮你快速开始一个vue的项目，也就是给你一套vue的结构，包含基础的依赖库，只需要 npm install就可以安装）  安装 Node.js  双击安装可以使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 SSH 连接到 GitHub">
-<meta property="og:url" content="https://saolllin.github.io/2023/01/06/%E4%BD%BF%E7%94%A8SSH%E8%BF%9E%E6%8E%A5%E5%88%B0GitHub/index.html">
+<meta property="og:title" content="npm安装以及配置">
+<meta property="og:url" content="https://saolllin.github.io/2023/01/07/npm%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="骚林大大的博客">
-<meta property="og:description" content="使用 SSH 连接到 GitHub 本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹      如果没有则需要通过以下命令创建 1ssh-keygen -t rsa -C &quot;youremail@example.com&quot;  “&amp;#x79;&amp;#111;&amp;#117;&amp;#x72;&amp;#x65;&amp;#109;&amp;#97;&amp;#105;&amp;#">
+<meta property="og:description" content="使用之前，先了解3个东西的作用 npm: Nodejs下的包管理器 webpack: 它主要的用途是通过CommonJS的语法把所有浏览器端需要发布的静态资源做相应的准备，比如资源的合并和打包 vue-cli: 用户生成Vue工程模板。（帮你快速开始一个vue的项目，也就是给你一套vue的结构，包含基础的依赖库，只需要 npm install就可以安装）  安装 Node.js  双击安装可以使用">
 <meta property="og:locale">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/9c1e6940570340a980a46e893f5d1560.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/63c4eb27278244a8ba257f573d385d86.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/9ebf58ec2b38467589ab47be33dd3d07.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/945f9e4a867c474394c2616a9f5659c9.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/9e4ab31731a2418ea4c7be6feca40a11.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/5950836fb37c4d8ea3842b5fcee58972.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/35f36a4f0b614107861ce7b182d98e0e.png#pic_center">
-<meta property="article:published_time" content="2023-01-05T23:08:31.192Z">
-<meta property="article:modified_time" content="2023-01-07T08:24:08.838Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/f9dbc4f95deb497597f355609aa280c1.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fe0b15009b8648da9f2aa3bdc96371ac.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d84febae8a4045e89cab51892fc91327.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ed4ef720e3f9417db06862ab93e98bb8.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1567c3d2f33f45bf866e123308c59c89.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/941e9cd96fe24278b2e8b85e5420cf2c.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/391c0c25dbce4d66a2e930df8fdfc096.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/6fba4ce0606a4f31a4e59bdbebfd3728.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2c365a5da2bd4234957c4f8139ac31fd.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2be62a7bb70445ae9a88cecb93a7e89b.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e324d11008be40199d33f0a0ae25fa4e.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1849dc746dda4dc488d956fd72a061ff.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8255cff70bb24709adc0dd86aeae17cd.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/24f23467475d4cafbf13a3b4eddc2b4d.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ea8ad42b2e09499da1246ffa55ccb7df.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0555a62c54e3492b87c84e7fe494c2a1.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/42c4c17ce9064b5ebf05d1cb47c1373c.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/714495410d1944aea4c5768108d503fb.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/6b63c43be4ff45bbae293efc8c9029be.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ca315e94dc524e41b6d26518c94f1a1f.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0b906b54408b47a0b6a9a334bc6a4dad.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1648237e4a62497e88864c6604230006.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2a76ba31f13342b7a9abf516cddc8c60.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ab48149efa3144e7b0ae1deb1b2a589f.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/36438ed792e346cea97e4aa4e7caab7e.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/7ba967cc15b14a2fa69fdaa755cc7cbe.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e906f0a7a726429483f39d91c65959bf.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a0662fbc1749459884d077f6f88f8b49.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c1649b6a4183486d90d1efe24033fc3a.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4cf3311e6f4344b3a61d53f4d4ce4d9e.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/d9704323045b443994cfb3ceacb0dfd6.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/462de15d8daf43b7baf724d08efa8458.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ca034194b51b4833b22ae05a753fac01.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a50ab90b35c54d9995898a0c781f72b5.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2a92f68991ce432ea7c025d8d74150d6.png#pic_center">
+<meta property="article:published_time" content="2023-01-07T08:24:16.685Z">
+<meta property="article:modified_time" content="2023-01-07T09:16:55.842Z">
 <meta property="article:author" content="Sao Lin">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/9c1e6940570340a980a46e893f5d1560.png#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/f9dbc4f95deb497597f355609aa280c1.png#pic_center">
 
     <meta name="keywords" content="使用 SSH 连接到 GitHub">
 
 
-<title >使用 SSH 连接到 GitHub</title>
+<title >npm安装以及配置</title>
 
 <!-- Favicon -->
 
@@ -236,7 +264,7 @@
                             Hi my new friend!
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            使用 SSH 连接到 GitHub
+                            npm安装以及配置
                         </h1>
 
                         
@@ -351,13 +379,13 @@
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
-            01/06
+            01/07
         </div>
     </div>
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-clock trm-icon"></i><br>
-            07:08
+            16:24
         </div>
     </div>
     <div class="col-sm-4">
@@ -369,37 +397,99 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h1 id="使用-SSH-连接到-GitHub"><a href="#使用-SSH-连接到-GitHub" class="headerlink" title="使用 SSH 连接到 GitHub"></a>使用 SSH 连接到 GitHub</h1><ul>
-<li>本地与Github建立连接，需要用到SSH公钥。一般安装完Git，会在用户目录中生成一个 .ssh的文件夹  </li>
+    <h2 id="使用之前，先了解3个东西的作用"><a href="#使用之前，先了解3个东西的作用" class="headerlink" title="使用之前，先了解3个东西的作用"></a>使用之前，先了解3个东西的作用</h2><ul>
+<li>npm: Nodejs下的包管理器</li>
+<li>webpack: 它主要的用途是通过CommonJS的语法把所有浏览器端需要发布的静态资源做相应的准备，比如资源的合并和打包</li>
+<li>vue-cli: 用户生成Vue工程模板。（帮你快速开始一个vue的项目，也就是给你一套vue的结构，包含基础的依赖库，只需要 npm install就可以安装）</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/9c1e6940570340a980a46e893f5d1560.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p><img src="https://img-blog.csdnimg.cn/f9dbc4f95deb497597f355609aa280c1.png#pic_center" loading="lazy"><br><img src="https://img-blog.csdnimg.cn/fe0b15009b8648da9f2aa3bdc96371ac.png#pic_center" loading="lazy"></p>
 <ul>
-<li><p>如果没有则需要通过以下命令创建</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot; </span><br></pre></td></tr></table></figure>
-<p>“<a href="mailto:&#x79;&#111;&#117;&#x72;&#x65;&#109;&#97;&#105;&#108;&#x40;&#x65;&#120;&#97;&#109;&#112;&#108;&#x65;&#46;&#x63;&#111;&#109;">&#x79;&#111;&#117;&#x72;&#x65;&#109;&#97;&#105;&#108;&#x40;&#x65;&#120;&#97;&#109;&#112;&#108;&#x65;&#46;&#x63;&#111;&#109;</a>“ 里是注册Github的邮箱</p>
+<li><p>双击安装<br>可以使用默认安装路径，也可以自行更改<br><img src="https://img-blog.csdnimg.cn/d84febae8a4045e89cab51892fc91327.png#pic_center" loading="lazy"></p>
 </li>
-<li><p>创建成功后其中有一个id_rsa.pub文件，我们复制其中的key:<br><img src="https://img-blog.csdnimg.cn/63c4eb27278244a8ba257f573d385d86.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<li><p>一路点Next<br><img src="https://img-blog.csdnimg.cn/ed4ef720e3f9417db06862ab93e98bb8.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 </li>
-<li><p>返回github，进入 Account Settings（账户配置），左边选择SSH and GPG Keys选项：</p>
+<li><p>点击 Finsh 完成<br><img src="https://img-blog.csdnimg.cn/1567c3d2f33f45bf866e123308c59c89.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br><img src="https://img-blog.csdnimg.cn/941e9cd96fe24278b2e8b85e5420cf2c.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br><img src="https://img-blog.csdnimg.cn/391c0c25dbce4d66a2e930df8fdfc096.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 </li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/9ebf58ec2b38467589ab47be33dd3d07.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
-<ul>
-<li>其中的title随便填，下面的粘贴在你电脑上生成的key。点击添加之后，则添加成功：</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/945f9e4a867c474394c2616a9f5659c9.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
-<p><img src="https://img-blog.csdnimg.cn/9e4ab31731a2418ea4c7be6feca40a11.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
-<ul>
-<li>成功后会有显示</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/5950836fb37c4d8ea3842b5fcee58972.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
-<ul>
-<li><p>验证是否绑定本地成功，在 git-bash 中验证 输入命令行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></li>
-<li><p>看到 You’ve successfully authenticated, but GitHub does not provide shell access. 表示已经连上github</p>
+<li><p>打开 CMD 检查是否正常<br><img src="https://img-blog.csdnimg.cn/6fba4ce0606a4f31a4e59bdbebfd3728.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br><img src="https://img-blog.csdnimg.cn/2c365a5da2bd4234957c4f8139ac31fd.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li><p>再看看另外2个目录，npm的本地仓库跑在系统盘c盘的用户目录了(没见到npm-cache是因为没有用过，一使用缓存目录就生成了)，我们试图把这2个目录移动回到D:\nodejs<br><img src="https://img-blog.csdnimg.cn/2be62a7bb70445ae9a88cecb93a7e89b.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li><p>先在自己安装的路径建立2个目录，如下图建立2个目录<br><img src="https://img-blog.csdnimg.cn/e324d11008be40199d33f0a0ae25fa4e.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li><p>然后运行以下2条命令</p>
 </li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/35f36a4f0b614107861ce7b182d98e0e.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix &quot;D:\nodejs\node_global&quot;</span><br><span class="line">npm config set cache &quot;D:\nodejs\node_cache&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/1849dc746dda4dc488d956fd72a061ff.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li>再来关注一下npm的本地仓库，输入命令npm list -global<br><img src="https://img-blog.csdnimg.cn/8255cff70bb24709adc0dd86aeae17cd.png#pic_center" alt="在这里插入图片描述" loading="lazy"></li>
+<li>输入命令配置镜像站</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry=http://registry.npm.taobao.org </span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/24f23467475d4cafbf13a3b4eddc2b4d.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li>输入命令显示所有配置信息，我们关注一个配置文件<br>C:\Users\Administrator.npmrc</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config list </span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/ea8ad42b2e09499da1246ffa55ccb7df.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li><p>使用文本编辑器编辑它，可以看到刚才的配置信息<br><img src="https://img-blog.csdnimg.cn/0555a62c54e3492b87c84e7fe494c2a1.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li><p>检查一下镜像站行不行</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/42c4c17ce9064b5ebf05d1cb47c1373c.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li>看看能否获得vue的信息</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm info vue</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/714495410d1944aea4c5768108d503fb.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br><img src="https://img-blog.csdnimg.cn/6b63c43be4ff45bbae293efc8c9029be.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br><img src="https://img-blog.csdnimg.cn/ca315e94dc524e41b6d26518c94f1a1f.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li>注意，此时，默认的模块D:\nodejs\node_modules 目录<br>将会改变为D:\nodejs\node_global\node_modules 目录，<br>如果直接运行npm install等命令会报错的。<br>我们需要做1件事情：</li>
+</ul>
+<ol>
+<li>增加环境变量NODE_PATH 内容是：D:\nodejs\node_global\node_modules<br><img src="https://img-blog.csdnimg.cn/0b906b54408b47a0b6a9a334bc6a4dad.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br>注意，一下操作需要重新打开CMD让上面的环境变量生效</li>
+<li>测试NPM安装vue.js</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue -g</span><br></pre></td></tr></table></figure>
+<p>这里的-g是指安装到global全局目录去<br><img src="https://img-blog.csdnimg.cn/1648237e4a62497e88864c6604230006.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<p><img src="https://img-blog.csdnimg.cn/2a76ba31f13342b7a9abf516cddc8c60.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li>测试NPM安装vue-router</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router -g</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/ab48149efa3144e7b0ae1deb1b2a589f.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<p><img src="https://img-blog.csdnimg.cn/36438ed792e346cea97e4aa4e7caab7e.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li>运行npm install vue-cli -g 安装vue脚手架</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/7ba967cc15b14a2fa69fdaa755cc7cbe.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<p><img src="https://img-blog.csdnimg.cn/e906f0a7a726429483f39d91c65959bf.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li><p>编辑环境变量Path<br>对path环境变量添加D:\nodejs\node_global<br>win10以下版本的，横向显示PATH的，注意添加到最后时，不要有分号 ;<br><img src="https://img-blog.csdnimg.cn/a0662fbc1749459884d077f6f88f8b49.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br><img src="https://img-blog.csdnimg.cn/c1649b6a4183486d90d1efe24033fc3a.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li><p>重新打开CMD，并且测试vue是否使用正常<br><img src="https://img-blog.csdnimg.cn/4cf3311e6f4344b3a61d53f4d4ce4d9e.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br>注意，vue-cli工具是内置了模板包括 webpack 和 webpack-simple,前者是比较复杂专业的项目，<br>他的配置并不全放在根目录下的 webpack.config.js 中。<br><img src="https://img-blog.csdnimg.cn/d9704323045b443994cfb3ceacb0dfd6.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li><p>初始化，运行 npm install 安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/462de15d8daf43b7baf724d08efa8458.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li><p>运行 npm run dev</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/ca034194b51b4833b22ae05a753fac01.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+<ul>
+<li><p>成功界面，提示打开地址<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a><br><img src="https://img-blog.csdnimg.cn/a50ab90b35c54d9995898a0c781f72b5.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
+</li>
+<li><p>运行 npm run build</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+
+<p>生成静态文件，打开dist文件夹下新生成的index.html文件<br>nmp下新建出来的vue01的目录描述：<br><img src="https://img-blog.csdnimg.cn/2a92f68991ce432ea7c025d8d74150d6.png#pic_center" alt="在这里插入图片描述" loading="lazy"></p>
 
 </article>
     
@@ -414,9 +504,10 @@
         </h5>
     </div>
     
+    
         <div class="col-lg-6">
             <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
-    <a href="/2023/01/07/npm%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/" class="trm-cover-frame trm-anima-link">
+    <a href="/2023/01/06/%E4%BD%BF%E7%94%A8SSH%E8%BF%9E%E6%8E%A5%E5%88%B0GitHub/" class="trm-cover-frame trm-anima-link">
         
         
             <img alt="cover" class="no-fancybox" src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/5/17/16ac4e567dabdc28~tplv-t2oaga2asx-zoom-crop-mark:1956:1956:1956:1101.image">
@@ -424,26 +515,25 @@
     </a>
     <div class="trm-card-descr">
         <div class="trm-label trm-category trm-mb-20">
-            <a href=" /categories/NodeJS/">
-                NodeJS
+            <a href=" /categories/Git/">
+                Git
             </a>
         </div>
         <h5>
-            <a href="/2023/01/07/npm%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AE/" class="trm-anima-link">
-                npm安装以及配置
+            <a href="/2023/01/06/%E4%BD%BF%E7%94%A8SSH%E8%BF%9E%E6%8E%A5%E5%88%B0GitHub/" class="trm-anima-link">
+                使用 SSH 连接到 GitHub
             </a>
         </h5>
         <div class="trm-divider trm-mb-20 trm-mt-20"></div>
         <ul class="trm-card-data trm-label">
-            <li>23/01/07</li>
-            <li>16:24</li>
+            <li>23/01/06</li>
+            <li>07:08</li>
             
             
         </ul>
     </div>
 </div>
         </div>
-    
     
 </div>
 
